@@ -12,9 +12,26 @@ public class BalloonClickDetection : MonoBehaviour, IPointerClickHandler
         {
             GameObject.Find("Text Points").GetComponent<Points>().points += 1;
 
+            var levels = GameObject.Find("LevelHolder").GetComponent<LevelHolder>().levels;
+
+            foreach (LevelUpSystem level in levels)
+            {
+                if (checkpoints(level))
+                {
+                    GetComponent<BalloonSpawning>().waitTime = level.waitTime;
+                }
+            }
+
             GetComponent<AudioSource>().Play();
 
             Destroy(eventData.pointerCurrentRaycast.gameObject.transform.parent.gameObject);
         }
+    }
+
+    bool checkpoints(LevelUpSystem lev)
+    {
+        if (lev.pointsReq == GetComponent<Points>().points) { return true; }
+
+        return false;
     }
 }

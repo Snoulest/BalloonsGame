@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class BalloonSpawning : MonoBehaviour
 {
-    public bool spawn;
+    public bool spawned;
     public float waitTime;
 
     [SerializeField] GameObject balloonTemplate;
 
     private void Start()
     {
-        spawn = true;
+        spawned = true;
     }
 
     private void Update()
     {
-        if (spawn)
+        if (spawned)
         {
             StartCoroutine(spawning());
-            spawn = false;
+            spawned = false;
         }
     }
 
@@ -34,6 +34,6 @@ public class BalloonSpawning : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        spawn = true;
+        spawned = true;
     }   
 }

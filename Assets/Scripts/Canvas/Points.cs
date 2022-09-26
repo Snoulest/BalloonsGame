@@ -18,4 +18,6 @@ public class Points : MonoBehaviour
     {
         text.text = points.ToString();
     }
+
+
 }
