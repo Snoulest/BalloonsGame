@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelUpSystem : MonoBehaviour
+[CreateAssetMenu(fileName = "Level")]
+public class Level : ScriptableObject
 {
-    public int level;
-    public int waitTime;
     public int pointsReq;
+    public float waitTime;
 }

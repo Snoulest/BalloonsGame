@@ -6,32 +6,33 @@ using UnityEngine.EventSystems;
 
 public class BalloonClickDetection : MonoBehaviour, IPointerClickHandler
 {
+
+    LevelSystem levelHolder;
+    Points points;
+
+    private void Start()
+    {
+        levelHolder = GameObject.Find("LevelHolder").GetComponent<LevelSystem>();
+        points = GameObject.Find("Text Points").GetComponent<Points>();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.pointerCurrentRaycast.gameObject.CompareTag("Balloon")) 
         {
-            GameObject.Find("Text Points").GetComponent<Points>().points += 1;
+            points.points += 1;
 
-            var levels = GameObject.Find("LevelHolder").GetComponent<LevelHolder>().levels;
+            GetComponent<AudioSource>().Play();
 
-            foreach (LevelUpSystem level in levels)
+            foreach (Level level in levelHolder.levels)
             {
-                if (checkpoints(level))
+                if (points.points == level.pointsReq)
                 {
                     GetComponent<BalloonSpawning>().waitTime = level.waitTime;
                 }
             }
 
-            GetComponent<AudioSource>().Play();
-
             Destroy(eventData.pointerCurrentRaycast.gameObject.transform.parent.gameObject);
         }
-    }
-
-    bool checkpoints(LevelUpSystem lev)
-    {
-        if (lev.pointsReq == GetComponent<Points>().points) { return true; }
-
-        return false;
     }
 }
