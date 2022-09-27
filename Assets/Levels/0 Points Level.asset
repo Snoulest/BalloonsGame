@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsReq: 0
   waitTime: 1.5
-  active: 0
+  ySpeed: 6.5

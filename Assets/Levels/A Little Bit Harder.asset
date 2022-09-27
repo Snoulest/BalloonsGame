@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac58c7ae119dbd49a0c114a0dfbb6e9, type: 3}
   m_Name: A Little Bit Harder
   m_EditorClassIdentifier: 
-  pointsReq: 30
-  waitTime: 0.6
+  pointsReq: 10
+  waitTime: 1
+  ySpeed: 6.7

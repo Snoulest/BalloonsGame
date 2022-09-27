@@ -6,12 +6,17 @@ public class BalloonSpawning : MonoBehaviour
 {
     public bool spawned;
     public float waitTime;
+    LevelSystem levelHolder;
+    Points points;
 
     [SerializeField] GameObject balloonTemplate;
 
     private void Start()
     {
         spawned = true;
+
+        levelHolder = GameObject.Find("LevelHolder").GetComponent<LevelSystem>();
+        points = GameObject.Find("Text Points").GetComponent<Points>();
     }
 
     private void Update()
@@ -30,10 +35,11 @@ public class BalloonSpawning : MonoBehaviour
         float xPos = Random.Range(0, canvas.transform.position.x * 2);
 
         var balloon = Instantiate(balloonTemplate, new Vector3(xPos, 0, 1), balloonTemplate.transform.rotation);
-        balloon.transform.parent = GameObject.Find("Game Canvas").transform;
+        balloon.transform.parent = canvas.transform;
+        balloon.GetComponent<BalloonMovement>().ySpeed = GetComponent<BalloonClickDetection>().currentYSpeed;
 
         yield return new WaitForSeconds(waitTime);
 
         spawned = true;
-    }   
+    }
 }

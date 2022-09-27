@@ -10,6 +10,7 @@ public class BalloonClickDetection : MonoBehaviour, IPointerClickHandler
 
     LevelSystem levelHolder;
     Points points;
+    public float currentYSpeed;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class BalloonClickDetection : MonoBehaviour, IPointerClickHandler
             if (points.points == level.pointsReq)
             {
                 GetComponent<BalloonSpawning>().waitTime = level.waitTime;
+
+                currentYSpeed = level.ySpeed;
 
                 GameObject.Find("Text Level").GetComponent<TMP_Text>().text = level.name;
             }
@@ -36,13 +39,17 @@ public class BalloonClickDetection : MonoBehaviour, IPointerClickHandler
             GetComponent<AudioSource>().Play();
 
             foreach (Level level in levelHolder.levels)
-            {
+            { 
+
                 if (points.points == level.pointsReq)
                 {
                     GetComponent<BalloonSpawning>().waitTime = level.waitTime;
 
+                    currentYSpeed = level.ySpeed;
+
                     GameObject.Find("Text Level").GetComponent<TMP_Text>().text = level.name;
                 }
+
             }
 
             Destroy(eventData.pointerCurrentRaycast.gameObject.transform.parent.gameObject);

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Starter Level
   m_EditorClassIdentifier: 
   pointsReq: 5
-  levelName: 
-  waitTime: 0.5
+  waitTime: 1.3
+  ySpeed: 6.7
