@@ -16,8 +16,6 @@ public class Points : MonoBehaviour
 
     void Update()
     {
-        text.text = points.ToString();
+        text.text = "Points: " + points.ToString();
     }
-
-
 }
