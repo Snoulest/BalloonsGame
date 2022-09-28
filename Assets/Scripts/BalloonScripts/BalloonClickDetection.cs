@@ -32,6 +32,8 @@ public class BalloonClickDetection : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (GetComponent<Stats>().dead) return;
+
         if (eventData.pointerCurrentRaycast.gameObject.CompareTag("Balloon")) 
         {
             points.points += 1;

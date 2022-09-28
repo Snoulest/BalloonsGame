@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class DeathScirpt : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        
     }
 }

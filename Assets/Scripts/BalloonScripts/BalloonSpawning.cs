@@ -21,6 +21,8 @@ public class BalloonSpawning : MonoBehaviour
 
     private void Update()
     {
+        if (GetComponent<Stats>().dead) return;
+
         if (spawned)
         {
             StartCoroutine(spawning());
