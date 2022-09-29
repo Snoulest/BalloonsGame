@@ -14,7 +14,16 @@ public class DeathZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GetComponentInParent<Stats>().dead) return;
+        if (GetComponentInParent<Stats>().dead)
+        {
+            if (GameObject.Find("Text Points").GetComponent<Points>().points > GameObject.Find("Text Points").GetComponent<Points>().highestScore)
+            {
+                GameObject.Find("Text Points").GetComponent<Points>().highestScore = GameObject.Find("Text Points").GetComponent<Points>().points;
+                new SaveSystem().save();
+            }
+
+            return;
+        }
 
         GameObject.Find("Text Health").GetComponent<TMP_Text>().text = "Health: " + (GetComponentInParent<Stats>().health - 1).ToString();
 

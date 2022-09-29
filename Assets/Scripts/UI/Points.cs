@@ -6,6 +6,7 @@ using TMPro;
 public class Points : MonoBehaviour
 {
     public int points;
+    public int highestScore;
 
     TMP_Text text;
 
