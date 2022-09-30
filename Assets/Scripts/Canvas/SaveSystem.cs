@@ -16,7 +16,7 @@ public class SaveSystem
             File.WriteAllText(path, "HighestScore: " + GameObject.Find("Text Points").GetComponent<Points>().highestScore.ToString());
         }
     }
-    
+
     public string read()
     {
         path = "./SaveFile.txt";

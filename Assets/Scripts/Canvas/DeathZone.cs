@@ -21,7 +21,6 @@ public class DeathZone : MonoBehaviour
                 GameObject.Find("Text Points").GetComponent<Points>().highestScore = GameObject.Find("Text Points").GetComponent<Points>().points;
                 new SaveSystem().save();
             }
-
             return;
         }
 

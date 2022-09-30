@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartMenu : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         new SaveSystem().createFile();       
     }
